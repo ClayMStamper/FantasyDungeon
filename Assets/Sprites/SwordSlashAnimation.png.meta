@@ -1,9 +1,21 @@
 fileFormatVersion: 2
 guid: da473c7b6fc71c04988ea5d0429942b7
-timeCreated: 1508990888
+timeCreated: 1508992817
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: SwordSlashAnimation_0
+    21300002: SwordSlashAnimation_1
+    21300004: SwordSlashAnimation_2
+    21300006: SwordSlashAnimation_3
+    21300008: SwordSlashAnimation_4
+    21300010: SwordSlashAnimation_5
+    21300012: SwordSlashAnimation_6
+    21300014: SwordSlashAnimation_7
+    21300016: SwordSlashAnimation_8
+    21300018: SwordSlashAnimation_9
+    21300020: SwordSlashAnimation_10
+    21300022: SwordSlashAnimation_11
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -40,7 +52,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -65,9 +77,231 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Samsung TV
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: SwordSlashAnimation_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 399.3333
+        width: 200
+        height: 199.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SwordSlashAnimation_1
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 399.3333
+        width: 200
+        height: 199.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SwordSlashAnimation_2
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 399.3333
+        width: 200
+        height: 199.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SwordSlashAnimation_3
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 399.3333
+        width: 200
+        height: 199.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SwordSlashAnimation_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 200.33333
+        width: 200
+        height: 199.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SwordSlashAnimation_5
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 200.33333
+        width: 200
+        height: 199.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SwordSlashAnimation_6
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 200.33333
+        width: 200
+        height: 199.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SwordSlashAnimation_7
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 200.33333
+        width: 200
+        height: 199.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SwordSlashAnimation_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1.3333282
+        width: 200
+        height: 199.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SwordSlashAnimation_9
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 1.3333282
+        width: 200
+        height: 199.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SwordSlashAnimation_10
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 1.3333282
+        width: 200
+        height: 199.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SwordSlashAnimation_11
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 1.3333282
+        width: 200
+        height: 199.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 
