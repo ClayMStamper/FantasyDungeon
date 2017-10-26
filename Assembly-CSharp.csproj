@@ -65,9 +65,11 @@
      <Compile Include="Assets\Scripts\Items\EquipmentManager.cs" />
      <Compile Include="Assets\Scripts\Items\Item.cs" />
      <Compile Include="Assets\Scripts\MapGenerator.cs" />
+     <Compile Include="Assets\Scripts\PlayerAttackController.cs" />
      <Compile Include="Assets\Scripts\PlayerMotor.cs" />
      <Compile Include="Assets\Scripts\PlayerStats.cs" />
      <Compile Include="Assets\Scripts\Stat.cs" />
+     <Compile Include="Assets\Scripts\StatTextUI.cs" />
      <Compile Include="Assets\Scripts\Utility.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

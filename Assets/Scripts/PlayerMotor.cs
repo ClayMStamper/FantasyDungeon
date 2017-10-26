@@ -7,24 +7,32 @@ public class PlayerMotor : MonoBehaviour {
 	public float speed;
 	public float turnSpeed;
 	public float screenEdgeBuffer;
+	Animator anim;
 
-	void LateUpdate(){
-		//transform.localRotation = Quaternion.Euler(Vector3.zero);
+	void Start(){
+		anim = GetComponent <Animator> ();
 	}
 
 	void Update () {
-		if (Input.GetKey (KeyCode.A)){
+		if (Input.GetKey (KeyCode.A)) {
 			transform.Rotate (Vector3.forward * turnSpeed);
 		}
-		if (Input.GetKey (KeyCode.W)){
+		if (Input.GetKey (KeyCode.D)) {
+			transform.Rotate (Vector3.back * turnSpeed);
+		} 
+
+		if (Input.GetKey (KeyCode.W)) {
 			transform.Translate (Vector3.up * Time.deltaTime * speed);
+			anim.SetBool ("running", true);
+			anim.speed = 1f;
+		} else if (Input.GetKey (KeyCode.S)) {
+			transform.Translate (Vector3.down * Time.deltaTime * speed / 2);
+			anim.SetBool ("running", true);
+			anim.speed = .5f;
+		} else {
+			anim.SetBool ("running", false);
 		}
-		if (Input.GetKey (KeyCode.D)){
-			transform.Rotate (Vector3.back *  turnSpeed);
-		}
-		if (Input.GetKey (KeyCode.S)){
-			transform.Translate (Vector3.down * Time.deltaTime *speed / 2);
-		}
+
 
 		// keep within camera, even when on the edge
 		Vector3 minScreenBounds = Camera.main.ScreenToWorldPoint (Vector3.zero);
