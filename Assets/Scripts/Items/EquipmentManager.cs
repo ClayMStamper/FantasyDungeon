@@ -8,7 +8,7 @@ public class EquipmentManager : MonoBehaviour {
 
 	Inventory inventory;
 
-	public delegate void OnEquipmentChanged ();
+	public delegate void OnEquipmentChanged (Equipment newItem, Equipment oldItem);
 	public OnEquipmentChanged onEquipmentChangedCallback;
 
 	#region Singelton
@@ -38,13 +38,12 @@ public class EquipmentManager : MonoBehaviour {
 	public void Equip(Equipment newItem){
 		int slotIndex = (int)newItem.equipSlot;
 		Equipment oldItem = Unequip (slotIndex);
-
 	//	if (onEquipmentChanged != null) {
 	//		onEquipmentChanged.Invoke (newItem, oldItem);
 	//	}
 
 		currentEquipment [slotIndex] = newItem;
-		onEquipmentChangedCallback.Invoke ();
+		onEquipmentChangedCallback.Invoke (newItem, oldItem);
 		inventory.onItemChangedCallback.Invoke ();
 //		SkinnedMeshRenderer newMesh = Instantiate<SkinnedMeshRenderer> (newItem.mesh);
 	//	newMesh.transform.SetParent (targetMesh.transform);
@@ -67,7 +66,9 @@ public class EquipmentManager : MonoBehaviour {
 		//	}
 
 			currentEquipment [slotIndex] = null;
-			onEquipmentChangedCallback.Invoke ();
+			//onEquipmentChangedCallback(newItem, oldItem).Invoke ();
+			Equipment noNewItem = null;
+			onEquipmentChangedCallback (noNewItem, oldItem);
 			inventory.onItemChangedCallback.Invoke ();
 			return oldItem;
 		}

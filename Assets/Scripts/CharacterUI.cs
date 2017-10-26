@@ -30,7 +30,7 @@ public class CharacterUI : MonoBehaviour {
 		}
 	}
 
-	void UpdateUI(){
+	void UpdateUI(Equipment fillerParam, Equipment fillerParam2){
 		for (int i = 0; i < slots.Length; i++) {
 			for (int j = 0; j < EquipmentManager.GetInstance ().currentEquipment.Length; j++) {
 				if (EquipmentManager.GetInstance().currentEquipment[j] != null){

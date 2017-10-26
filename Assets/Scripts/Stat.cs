@@ -2,15 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stat : MonoBehaviour {
+[System.Serializable]
+public class Stat {
 
-	// Use this for initialization
-	void Start () {
-		
+	[SerializeField]
+	private int baseStat;
+
+	private List<int> modifiers = new List<int>();
+
+	public int GetValue(){
+		int modifiedStat = baseStat;
+		// add each modifier value x in modifers<> to modified stat
+		modifiers.ForEach (x => modifiedStat += x); 
+		return modifiedStat;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	public void AddModifier(int modifier){
+		if (modifier != 0) {
+			modifiers.Add (modifier);
+		}
+	}
+
+	public void RemoveModifier (int Modifier){
+		if (Modifier != 0) {
+			modifiers.Remove (Modifier);
+		}
 	}
 }
