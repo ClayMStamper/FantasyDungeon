@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\CharacterStats.cs" />
      <Compile Include="Assets\Scripts\CharacterUI.cs" />
+     <Compile Include="Assets\Scripts\EnemyController.cs" />
      <Compile Include="Assets\Scripts\EquippedSlot.cs" />
      <Compile Include="Assets\Scripts\GroundGenerator.cs" />
      <Compile Include="Assets\Scripts\Interactable.cs" />
@@ -65,8 +66,11 @@
      <Compile Include="Assets\Scripts\Items\Equipment.cs" />
      <Compile Include="Assets\Scripts\Items\EquipmentManager.cs" />
      <Compile Include="Assets\Scripts\Items\Item.cs" />
+     <Compile Include="Assets\Scripts\LightFollow.cs" />
      <Compile Include="Assets\Scripts\MapGenerator.cs" />
+     <Compile Include="Assets\Scripts\NewBehaviourScript.cs" />
      <Compile Include="Assets\Scripts\PlayerAttackController.cs" />
+     <Compile Include="Assets\Scripts\PlayerManager.cs" />
      <Compile Include="Assets\Scripts\PlayerMotor.cs" />
      <Compile Include="Assets\Scripts\PlayerStats.cs" />
      <Compile Include="Assets\Scripts\Stat.cs" />
