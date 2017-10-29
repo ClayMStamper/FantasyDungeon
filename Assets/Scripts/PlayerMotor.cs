@@ -15,18 +15,18 @@ public class PlayerMotor : MonoBehaviour {
 
 	void Update () {
 		if (Input.GetKey (KeyCode.A)) {
-			transform.Rotate (Vector3.forward * turnSpeed);
+			transform.Rotate (Vector3.down * turnSpeed);
 		}
 		if (Input.GetKey (KeyCode.D)) {
-			transform.Rotate (Vector3.back * turnSpeed);
+			transform.Rotate (Vector3.up * turnSpeed);
 		} 
 
 		if (Input.GetKey (KeyCode.W)) {
-			transform.Translate (Vector3.up * Time.deltaTime * speed);
+			transform.Translate (Vector3.forward * Time.deltaTime * speed);
 			anim.SetBool ("running", true);
 			anim.speed = 1f;
 		} else if (Input.GetKey (KeyCode.S)) {
-			transform.Translate (Vector3.down * Time.deltaTime * speed / 2);
+			transform.Translate (Vector3.back * Time.deltaTime * speed / 2);
 			anim.SetBool ("running", true);
 			anim.speed = .5f;
 		} else {
@@ -35,11 +35,11 @@ public class PlayerMotor : MonoBehaviour {
 
 
 		// keep within camera, even when on the edge
-		Vector3 minScreenBounds = Camera.main.ScreenToWorldPoint (Vector3.zero);
-		Vector3 maxScreenBounds = Camera.main.ScreenToWorldPoint (new Vector3 (Screen.width, Screen.height, 0));
+	//	Vector3 minScreenBounds = Camera.main.ScreenToWorldPoint (Vector3.zero);
+	//	Vector3 maxScreenBounds = Camera.main.ScreenToWorldPoint (new Vector3 (Screen.width, Screen.height, 0));
 
-		transform.position = new Vector3 (Mathf.Clamp (transform.position.x, minScreenBounds.x - screenEdgeBuffer,
-			maxScreenBounds.x - screenEdgeBuffer), Mathf.Clamp (transform.position.y, minScreenBounds.y - screenEdgeBuffer,
-			maxScreenBounds.y - screenEdgeBuffer), transform.position.z);
+	//	transform.position = new Vector3 (Mathf.Clamp (transform.position.x, minScreenBounds.x - screenEdgeBuffer,
+	//		maxScreenBounds.x - screenEdgeBuffer), Mathf.Clamp (transform.position.y, minScreenBounds.y - screenEdgeBuffer,
+	//		maxScreenBounds.y - screenEdgeBuffer), transform.position.z);
 	}
 }

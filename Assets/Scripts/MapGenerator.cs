@@ -150,7 +150,7 @@ public class MapGenerator : MonoBehaviour {
 	}
 
 	Vector3 CoordToPosition(int x, int y){
-		Vector3 newPos = new Vector3 ((float)(-mapSize.x / 2 + 0.5 + x),(float)( -mapSize.y / 2 + 0.5f + y), 0f);
+		Vector3 newPos = new Vector3 ((float)(-mapSize.x / 2 + 0.5 + x), 0f, (float)( -mapSize.y / 2 + 0.5f + y));
 		return newPos;
 	}
 

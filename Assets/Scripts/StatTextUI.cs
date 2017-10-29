@@ -21,6 +21,9 @@ public class StatTextUI : MonoBehaviour {
 		case MyStat.damage:
 			StartCoroutine ("UpdateDamageText");
 			break;
+		case MyStat.attackSpeed:
+			StartCoroutine ("UpdateAttackSpeedText");
+			break;
 		default:
 			return;
 		}
@@ -30,7 +33,7 @@ public class StatTextUI : MonoBehaviour {
 		while (true) {
 			myText.text = "Armor: " + playerStats.armor.GetValue ();
 			yield return null;
-			print ("updating");
+//			print ("updating");
 		}
 	}
 	IEnumerator UpdateHealthText(){
@@ -45,7 +48,13 @@ public class StatTextUI : MonoBehaviour {
 			yield return null;
 		}
 	}
+	IEnumerator UpdateAttackSpeedText(){
+		while (true) {
+			myText.text = "AS: " + playerStats.attackSpeed.GetValue ();
+			yield return null;
+		}
+	}
 }
 
 
-public enum MyStat{health, armor, damage}
+public enum MyStat{health, armor, damage, attackSpeed}

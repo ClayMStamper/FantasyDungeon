@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour {
 
-	void OnTriggerEnter2D(Collider2D col){
+	void OnTriggerEnter(Collider col){
 		Interact (col);
 	}
 
-	public virtual void Interact(Collider2D col){
+	public virtual void Interact(Collider col){
 		print ("Interacting with " + col);
 	}
 }

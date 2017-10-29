@@ -7,6 +7,9 @@ public class CharacterStats : MonoBehaviour {
 
 	public Stat damage;
 	public Stat armor;
+	public Stat attackSpeed;
+	[Tooltip ("Multiply disired worldview distance by 10")]
+	public Stat attackRange;
 
 	void Awake(){
 		currentHealth = maxHealth;
