@@ -40,7 +40,7 @@ public class AnimateSprite : MonoBehaviour
 	    // v coordinate is the bottom of the image in opengl so we need to invert.
 	    float offsetX = (uIndex+colNumber) * size.x;
 	    float offsetY = (1.0f - size.y) - (vIndex + rowNumber) * size.y;
-	    Vector2 offset = new Vector2(offsetX,offsetY);
+//	    Vector2 offset = new Vector2(offsetX,offsetY);
 	 
 //	    renderer.material.SetTextureOffset ("_MainTex", offset);
 //	    renderer.material.SetTextureScale  ("_MainTex", size);
