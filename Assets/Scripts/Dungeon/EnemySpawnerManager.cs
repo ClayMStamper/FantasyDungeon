@@ -68,7 +68,9 @@ public class EnemySpawnerManager : MonoBehaviour {
 			print ("xPercent : " + xPercent + "\nenemyLevelPercent : " + enemyLevelPercent);
 			float difference = xPercent - enemyLevelPercent;
 			if (difference <= spawnRate && xPercent - enemyLevelPercent >= -spawnRate) {
-				spawnableEnemies.Add (enemyPrefabs [i]);
+				if (Random.value * 100f <= enemy.GetComponent <Enemy> ().spawnChance) {
+					spawnableEnemies.Add (enemyPrefabs [i]);
+				}
 			}
 		}
 		try{

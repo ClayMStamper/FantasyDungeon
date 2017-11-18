@@ -9,6 +9,7 @@ public class Enemy : Interactable {
 	CharacterStats myStats;
 	public Vector2 enemySpawnRange;
 	public float attackRange;
+	public float spawnChance = 100f;
 	[SerializeField]
 	Item[] droppableLoot;
 	[Tooltip("Min and Max items that can be dropped by this enemy")]

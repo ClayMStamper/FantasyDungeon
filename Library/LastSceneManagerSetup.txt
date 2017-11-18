@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/_Scenes/Dungeon.unity
+- path: Assets/_Scenes/01a_Surface.unity
   isLoaded: 1
   isActive: 1

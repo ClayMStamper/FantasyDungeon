@@ -12,6 +12,22 @@ public class MapGenerator : MonoBehaviour {
 	public Color foregroundColor, backgroundColor;
 	EnemySpawnerManager enemySpawnerManager;
 
+	#region Singelton
+	private static MapGenerator instance;
+
+	void Awake(){
+		if (instance != null) {
+			Destroy (this);
+		} else {
+			instance = this;
+		}
+	}
+
+	public static MapGenerator GetInstance(){
+		return instance;
+	}
+	#endregion
+
 	[Range(0,1)]
 	public float obstaclePercent;
 
