@@ -24,8 +24,8 @@ public class CharacterStats : MonoBehaviour {
 	public virtual void TakeDamage(int damageTaken){
 
 		currentHealth -= DamageTakenAfterArmor(damageTaken);
-		Debug.Log (transform.name + " took " + damageTaken + " damage!\n" + DamageTakenAfterArmor (damageTaken));
-		Debug.Log ( "\nHealth = " + currentHealth);
+//		Debug.Log (transform.name + " took " + damageTaken + " damage!\n" + DamageTakenAfterArmor (damageTaken));
+//		Debug.Log ( "\nHealth = " + currentHealth);
 
 		if (currentHealth <= 0) {
 			Die ();

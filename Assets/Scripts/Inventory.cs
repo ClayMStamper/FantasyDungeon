@@ -7,6 +7,7 @@ public class Inventory : MonoBehaviour {
 	public List <Item> items = new List <Item>();
 
 	public int space = 28;
+	public Item itemBeingDragged;
 
 	public delegate void OnItemChanged ();
 	public OnItemChanged onItemChangedCallback;
