@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour {
 
-	public List <Item> items = new List <Item>();
+	public List <Item> items = new List <Item>(24);
 
-	public int space = 28;
+	public int space = 24;
 	public Item itemBeingDragged;
+	public InventorySlot slotBeingDraggedFrom;
 
 	public delegate void OnItemChanged ();
 	public OnItemChanged onItemChangedCallback;
@@ -21,6 +22,7 @@ public class Inventory : MonoBehaviour {
 		} else {
 			instance = this;
 		}
+			
 	}
 
 	public static Inventory GetInstance(){
@@ -28,15 +30,32 @@ public class Inventory : MonoBehaviour {
 	}
 	#endregion
 
+	void Start(){
+
+		for (int i = 0; i < space; i++) {
+			items.Add (null);
+		}
+	}
+
 	public bool Add (Item item){
 		
-		if (items.Count >= space) {
+	/*	if (items.Count >= space) {
 			print ("INVENTORY FULL");
 			return false;
-		}
+		}*/
 	//	print ("Adding " + item + " to inventory");
-		items.Add (item);
-		
+		//items.Add (item);
+
+		for (int i = 0; i < space; i++) {
+			if (items [i] == null) {
+				items [i] = item;
+				break;
+			} else if (i >= space){
+				print ("INVENTORY FULL");
+				return false;
+			}
+		}
+
 		if (onItemChangedCallback != null)
 			onItemChangedCallback.Invoke ();
 		
@@ -44,9 +63,13 @@ public class Inventory : MonoBehaviour {
 	}
 
 	public void Remove (Item item){
-		items.Remove (item);
+		for (int i = 0; i < space; i++) {
+			if (items [i] == item) {
+				items [i] = null;
+			}
 
-		if (onItemChangedCallback != null)
-			onItemChangedCallback.Invoke ();
+			if (onItemChangedCallback != null)
+				onItemChangedCallback.Invoke ();
+		}
 	}
 }
