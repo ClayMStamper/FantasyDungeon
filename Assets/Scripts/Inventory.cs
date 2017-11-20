@@ -7,13 +7,11 @@ public class Inventory : MonoBehaviour {
 	public List <Item> items = new List <Item>(24);
 
 	public int space = 24;
-	public Item itemBeingDragged;
-	public InventorySlot slotBeingDraggedFrom;
 
 	public delegate void OnItemChanged ();
 	public OnItemChanged onItemChangedCallback;
 
-	#region Singelton
+	#region Singleton
 	private static Inventory instance;
 
 	void Awake(){
@@ -66,6 +64,7 @@ public class Inventory : MonoBehaviour {
 		for (int i = 0; i < space; i++) {
 			if (items [i] == item) {
 				items [i] = null;
+				break;
 			}
 
 			if (onItemChangedCallback != null)

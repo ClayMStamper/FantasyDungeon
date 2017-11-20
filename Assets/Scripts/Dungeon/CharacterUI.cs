@@ -8,6 +8,7 @@ public class CharacterUI : MonoBehaviour {
 	public Transform CharacterSlotsParent;
 	public GameObject characterUI;
 	static CharacterUI instance;
+	EquipmentManager equipmentManager;
 
 	public EquippedSlot[] slots;
 
@@ -17,7 +18,8 @@ public class CharacterUI : MonoBehaviour {
 
 	void Start () {
 		instance = this;
-		EquipmentManager.GetInstance ().onEquipmentChangedCallback += UpdateUI;
+		equipmentManager = EquipmentManager.GetInstance ();
+		equipmentManager.onEquipmentChangedCallback += UpdateUI;
 
 		//inventory = Inventory.GetInstance ();
 
@@ -32,11 +34,13 @@ public class CharacterUI : MonoBehaviour {
 
 	void UpdateUI(Equipment fillerParam, Equipment fillerParam2){
 		for (int i = 0; i < slots.Length; i++) {
-			for (int j = 0; j < EquipmentManager.GetInstance ().currentEquipment.Length; j++) {
-				if (EquipmentManager.GetInstance().currentEquipment[j] != null){
-					if ((int)slots [i].slotType == (int)EquipmentManager.GetInstance ().currentEquipment [j].equipSlot) {
-						slots [i].Equip (EquipmentManager.GetInstance ().currentEquipment [j]);
+			for (int j = 0; j < equipmentManager.currentEquipment.Length; j++) {
+				if (equipmentManager.currentEquipment [j] != null) {
+					if ((int)slots [i].slotType == (int)equipmentManager.currentEquipment [j].equipSlot) {
+						slots [i].Equip (equipmentManager.currentEquipment [j]);
 					}
+				} else {
+					slots [j].ClearSlot ();
 				}
 			}
 		}

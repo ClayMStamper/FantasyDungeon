@@ -53,6 +53,16 @@ public class EquipmentManager : MonoBehaviour {
 		//currentMeshes [slotIndex] = newMesh;
 	}
 
+	public void Equip(Equipment newItem, int inventorySlotIndex){
+		int slotIndex = (int)newItem.equipSlot;
+		Equipment oldItem = Unequip (slotIndex);
+
+		currentEquipment [slotIndex] = newItem;
+		onEquipmentChangedCallback.Invoke (newItem, oldItem);
+		inventory.onItemChangedCallback.Invoke ();
+
+	}
+
 	public Equipment Unequip(int slotIndex){
 		if (currentEquipment [slotIndex] != null) {
 		//	if (currentMeshes [slotIndex] != null) {
@@ -67,6 +77,22 @@ public class EquipmentManager : MonoBehaviour {
 
 			currentEquipment [slotIndex] = null;
 			//onEquipmentChangedCallback(newItem, oldItem).Invoke ();
+			Equipment noNewItem = null;
+			onEquipmentChangedCallback (noNewItem, oldItem);
+			inventory.onItemChangedCallback.Invoke ();
+			return oldItem;
+		}
+		return null;
+	}
+
+	public Equipment Unequip(int slotIndex, int inventorySlotIndex){
+		if (currentEquipment [slotIndex] != null) {
+
+			Equipment oldItem = currentEquipment [slotIndex];
+			inventory.items[inventorySlotIndex] = oldItem;
+
+			currentEquipment [slotIndex] = null;
+
 			Equipment noNewItem = null;
 			onEquipmentChangedCallback (noNewItem, oldItem);
 			inventory.onItemChangedCallback.Invoke ();

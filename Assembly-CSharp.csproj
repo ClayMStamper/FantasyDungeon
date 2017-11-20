@@ -76,6 +76,7 @@
      <Compile Include="Assets\Anima2D\Scripts\SpriteMeshAnimation.cs" />
      <Compile Include="Assets\Anima2D\Scripts\SpriteMeshInstance.cs" />
      <Compile Include="Assets\Dungeon Art Pack\AnimateSprite.cs" />
+     <Compile Include="Assets\Scripts\DragHandler.cs" />
      <Compile Include="Assets\Scripts\Dungeon\AttackGraphics.cs" />
      <Compile Include="Assets\Scripts\Dungeon\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Dungeon\CharacterCombat.cs" />

@@ -15,13 +15,13 @@ public class Equipment : Item {
 	[Tooltip ("Multiply disired worldview distance by 10")]
 	public int attackRangeModifier;
 
-	public override void Use(){
+	public override void Use(int inventorySlotIndex){
 		base.Use ();
 
-		EquipmentManager.GetInstance ().Equip (this);
+		EquipmentManager.GetInstance ().Equip (this, inventorySlotIndex);
 		RemoveFromInventory ();
 	}
 
 }
 
-public enum EquipmentSlot{ head, chest, legs, weapon, shield, ring }
+public enum EquipmentSlot{ head, ring, chest, weapon, legs, shield }

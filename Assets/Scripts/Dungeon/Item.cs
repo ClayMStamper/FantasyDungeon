@@ -16,6 +16,12 @@ public class Item : ScriptableObject {
 
 		Debug.Log ("Using " + name);
 	}
+	public virtual void Use(int inventorySlotIndex){
+		// use item
+		// something might happen
+
+		Debug.Log ("Using " + name);
+	}
 
 	public void RemoveFromInventory(){
 		Inventory.GetInstance ().Remove (this);

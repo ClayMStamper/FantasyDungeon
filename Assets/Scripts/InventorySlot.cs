@@ -6,6 +6,17 @@ public class InventorySlot : MonoBehaviour {
 	public Image icon;
 
 	public Item item;
+	public int myIndexInIventory;
+	DragHandler dragHandler;
+	Inventory inventory;
+	EquipmentManager equipmentManager;
+
+	void Start(){
+		myIndexInIventory = transform.GetSiblingIndex ();
+		dragHandler = DragHandler.GetInstance ();
+		inventory = Inventory.GetInstance ();
+		equipmentManager = EquipmentManager.GetInstance ();
+	}
 
 	public void AddItem(Item newItem){
 		item = newItem;	
@@ -21,13 +32,9 @@ public class InventorySlot : MonoBehaviour {
 		icon.enabled = false;
 	}
 
-	public void OnDestroyItem(){
-		Inventory.GetInstance ().Remove (item);
-	}
-
 	public void UseItem(){
 		if (item != null) {
-			item.Use ();
+			item.Use (myIndexInIventory);
 		}
 		ClearSlot ();
 	}
@@ -39,38 +46,63 @@ public class InventorySlot : MonoBehaviour {
 	}
 
 	public void Drag(){
-		Inventory.GetInstance ().itemBeingDragged = item;
-		Inventory.GetInstance ().slotBeingDraggedFrom = this;
+		dragHandler.itemBeingDragged = item;
+		dragHandler.inventorySlotBeingDraggedFrom = this;
+		dragHandler.equipmentSlotBeingDraggedFrom = null;
 		icon.GetComponent <Canvas> ().sortingOrder = 2;
 		icon.transform.localScale = new Vector3 (1.5f, 1.5f, 1.5f);
 		icon.transform.position = Input.mousePosition;
 	}
 
 	public void EndDrag(){
-		print ("Dropping: " + Inventory.GetInstance ().itemBeingDragged);
+		print ("Dropping: " + dragHandler.itemBeingDragged);
 		ResetIcon ();
 	}
 
-	public  void Drop(){
+	public void OnDrop(){
 		/*Item temp = item;
 		item = Inventory.GetInstance ().slotBeingDraggedFrom.item;
 		Inventory.GetInstance ().slotBeingDraggedFrom.item = temp;*/
-		int draggedFromIndex = -1;
-		int draggedToIndex = -1;
-		for (int i = 0; i < Inventory.GetInstance ().space; i++) {
-			if (InventoryUI.GetInstance ().slots [i] == this) {
-				draggedToIndex = i;
-			}
-		}
-		for (int i = 0; i < Inventory.GetInstance ().space; i++) {
-			if (InventoryUI.GetInstance ().slots [i] == Inventory.GetInstance().slotBeingDraggedFrom) {
-				draggedFromIndex = i;
-			}
-		}
-		Item temp = Inventory.GetInstance ().items [draggedFromIndex];
-		Inventory.GetInstance ().items [draggedFromIndex] = Inventory.GetInstance ().items [draggedToIndex];
-		Inventory.GetInstance ().items [draggedToIndex] = temp;
+		if (dragHandler.inventorySlotBeingDraggedFrom != null) {
+			int draggedFromIndex = -1; // -1 is an arbitrary value 
+			int draggedToIndex = myIndexInIventory;
 
-		Inventory.GetInstance ().onItemChangedCallback.Invoke ();
+			for (int i = 0; i < Inventory.GetInstance ().space; i++) {
+				if (InventoryUI.GetInstance ().slots [i] == dragHandler.inventorySlotBeingDraggedFrom) {
+					draggedFromIndex = i;
+				}
+			}
+			Item temp = Inventory.GetInstance ().items [draggedFromIndex];
+			Inventory.GetInstance ().items [draggedFromIndex] = Inventory.GetInstance ().items [draggedToIndex];
+			Inventory.GetInstance ().items [draggedToIndex] = temp;
+
+			Inventory.GetInstance ().onItemChangedCallback.Invoke ();
+		} else if (dragHandler.equipmentSlotBeingDraggedFrom != null) {
+			Equipment nullNewItem = null, nullOldItem = null;
+			Item temp = null;
+			if (item != null)
+				temp = item;
+			if (inventory.items [myIndexInIventory] != null) {
+				if ((int)((Equipment)inventory.items [myIndexInIventory]).equipSlot == (int)dragHandler.equipmentSlotBeingDraggedFrom.item.equipSlot) {
+					inventory.items [myIndexInIventory] = dragHandler.equipmentSlotBeingDraggedFrom.item;
+					equipmentManager.currentEquipment [dragHandler.equipmentSlotBeingDraggedFrom.myEquipmentSlotIndex] = (Equipment)temp; // needs to be tested with non-equipment items
+
+					inventory.onItemChangedCallback.Invoke ();
+
+					//Equipment nullNewItem = null, nullOldItem = null;
+					equipmentManager.onEquipmentChangedCallback.Invoke (nullNewItem, nullOldItem);
+				} else {
+					return;
+				}
+			} else {
+				inventory.items [myIndexInIventory] = dragHandler.equipmentSlotBeingDraggedFrom.item;
+				equipmentManager.currentEquipment [dragHandler.equipmentSlotBeingDraggedFrom.myEquipmentSlotIndex] = (Equipment)temp; // needs to be tested with non-equipment items
+
+				inventory.onItemChangedCallback.Invoke ();
+
+
+				equipmentManager.onEquipmentChangedCallback.Invoke (nullNewItem, nullOldItem);
+			}
+		}
 	}
 }
