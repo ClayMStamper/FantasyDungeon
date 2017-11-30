@@ -14,6 +14,7 @@ public class CameraFollow : MonoBehaviour {
 	void Start(){
 		mapSize.x = mapGenerator.mapSize.x;
 		mapSize.y = mapGenerator.mapSize.y;
+		target = PlayerManager.GetInstance ().player.transform;
 	}
 
 	void LateUpdate(){

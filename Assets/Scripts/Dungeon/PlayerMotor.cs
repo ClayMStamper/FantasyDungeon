@@ -6,6 +6,7 @@ public class PlayerMotor : MonoBehaviour {
 
 	public float speed;
 	public float turnSpeed;
+	public float animAccelerationSpeed = 0.1f;
 	public float screenEdgeBuffer;
 	Animator anim;
 
@@ -23,14 +24,14 @@ public class PlayerMotor : MonoBehaviour {
 
 		if (Input.GetKey (KeyCode.W)) {
 			transform.Translate (Vector3.forward * Time.deltaTime * speed);
-			anim.SetBool ("running", true);
+			anim.SetFloat ("Blend", Mathf.Clamp (anim.GetFloat("Blend") + animAccelerationSpeed, 0f, 1f));
 			anim.speed = 1f;
 		} else if (Input.GetKey (KeyCode.S)) {
 			transform.Translate (Vector3.back * Time.deltaTime * speed / 2);
-			anim.SetBool ("running", true);
+			anim.SetFloat ("Blend", Mathf.Clamp (anim.GetFloat("Blend") + animAccelerationSpeed, 0f, .51f));
 			anim.speed = .5f;
 		} else {
-			anim.SetBool ("running", false);
+			anim.SetFloat ("Blend", Mathf.Clamp (anim.GetFloat("Blend") - animAccelerationSpeed, 0f, 1f));
 		}
 
 

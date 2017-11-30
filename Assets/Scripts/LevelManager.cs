@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
 
+	public delegate void OnLevelLevelWasLoaded ();
+	public OnLevelLevelWasLoaded onLevelWasLoadedCallback;
+
 	#region Singelton
 	private static LevelManager instance;
 
@@ -23,6 +26,21 @@ public class LevelManager : MonoBehaviour {
 		return instance;
 	}
 	#endregion
+
+	void OnEnable(){
+		SceneManager.sceneLoaded += LevelFinishedLoading;
+	}
+
+	void OnDisable(){
+		SceneManager.sceneLoaded -= LevelFinishedLoading;
+	}
+
+	void LevelFinishedLoading (Scene scene, LoadSceneMode mode){
+		if (onLevelWasLoadedCallback != null) {
+			onLevelWasLoadedCallback.Invoke ();
+		}
+	//	Debug.Break ();
+	}
 
 	public void LoadLevel(string levelName){
 		SceneManager.LoadScene (levelName);

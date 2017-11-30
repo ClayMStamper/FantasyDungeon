@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour {
 
 
 	public float lookRadius = 10f;
+	[SerializeField]
 	Transform target;
 	NavMeshAgent agent;
 	PlayerAttackController playerAttackController;
@@ -20,24 +21,30 @@ public class EnemyController : MonoBehaviour {
 	}
 
 	void Update(){
-		float distance = Vector3.Distance (target.transform.position, transform.position);
-
-		if (distance <= lookRadius) {
-			agent.SetDestination (target.position);
-
-			if (distance <= agent.stoppingDistance) {
-				FaceTarget ();
-				CharacterStats targetsStats = target.GetComponent <CharacterStats> ();
-				if (targetsStats != null) {
-					combat.Attack (targetsStats);
-				}
-			}
-			if (!playerAttackController.enemiesInFieldOfAttack.Contains (transform)) {
-				playerAttackController.AddToFieldOfAttack (transform);
+		if (target == null) {
+			if (PlayerManager.GetInstance ().player.transform != null) {
+				target = PlayerManager.GetInstance ().player.transform;
 			}
 		} else {
-			if (playerAttackController.enemiesInFieldOfAttack.Contains (transform)) {
-				playerAttackController.RemoveFromFieldOfAttack (transform);
+			float distance = Vector3.Distance (target.transform.position, transform.position);
+
+			if (distance <= lookRadius) {
+				agent.SetDestination (target.position);
+
+				if (distance <= agent.stoppingDistance) {
+					FaceTarget ();
+					CharacterStats targetsStats = target.GetComponent <CharacterStats> ();
+					if (targetsStats != null) {
+						combat.Attack (targetsStats);
+					}
+				}
+				if (!playerAttackController.enemiesInFieldOfAttack.Contains (transform)) {
+					playerAttackController.AddToFieldOfAttack (transform);
+				}
+			} else {
+				if (playerAttackController.enemiesInFieldOfAttack.Contains (transform)) {
+					playerAttackController.RemoveFromFieldOfAttack (transform);
+				}
 			}
 		}
 	}

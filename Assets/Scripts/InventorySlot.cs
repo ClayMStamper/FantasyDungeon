@@ -18,14 +18,14 @@ public class InventorySlot : MonoBehaviour {
 		equipmentManager = EquipmentManager.GetInstance ();
 	}
 
-	public void AddItem(Item newItem){
+	public void AddItemUI(Item newItem){
 		item = newItem;	
 
 		icon.sprite = item.icon;
 		icon.enabled = true;
 	}
 
-	public void ClearSlot(){
+	public void ClearSlotUI(){
 		item = null;
 
 		icon.sprite = null;
@@ -36,7 +36,7 @@ public class InventorySlot : MonoBehaviour {
 		if (item != null) {
 			item.Use (myIndexInIventory);
 		}
-		ClearSlot ();
+		ClearSlotUI ();
 	}
 
 	void ResetIcon(){

@@ -4,6 +4,23 @@ using UnityEngine;
 
 public class PlayerStats : CharacterStats {
 
+	#region Singelton
+	private static PlayerStats instance;
+
+	void Awake(){
+		if (instance != null) {
+			Destroy (gameObject);
+		} else {
+			instance = this;
+		}
+		DontDestroyOnLoad (gameObject);
+	}
+
+	public static PlayerStats GetInstance(){
+		return instance;
+	}
+	#endregion
+
 	void Start () {
 		EquipmentManager.GetInstance ().onEquipmentChangedCallback += OnEquipmentChanged;
 	}

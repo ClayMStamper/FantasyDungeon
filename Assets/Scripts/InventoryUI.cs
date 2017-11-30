@@ -41,30 +41,13 @@ public class InventoryUI : MonoBehaviour {
 		}
 	}
 
-//	[ContextMenu("Update Inventory")]
-/*	public void UpdateUI(){
-		print ("updating UI");
-		for (int i = 0; i < slots.Length; i++) {
-			if (i < inventory.items.Count) {
-				slots [i].AddItem (inventory.items [i]); 
-			} else {
-				slots [i].ClearSlot ();
-			}
-		}
-	}
-	void LateUpdateUI(){
-		//intended to occur at the very end of onItemChangedCallback
-		Invoke ("UpdateUI", 0.01f);
-	}
-	*/
-
 	public void UpdateUI(){
 		print ("updating UI");
 		for (int i = 0; i < slots.Length; i++) {
 			if (inventory.items [i] != null) {
-				slots [i].AddItem (inventory.items [i]);
+				slots [i].AddItemUI (inventory.items [i]);
 			} else {
-				slots [i].ClearSlot ();
+				slots [i].ClearSlotUI ();
 			}
 		}
 		foreach (InventorySlot slot in slots) {

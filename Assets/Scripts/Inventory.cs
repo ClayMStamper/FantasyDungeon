@@ -60,6 +60,7 @@ public class Inventory : MonoBehaviour {
 		return true;
 	}
 
+	//probably causing glitches: change to take in inventory slot instead of item
 	public void Remove (Item item){
 		for (int i = 0; i < space; i++) {
 			if (items [i] == item) {
